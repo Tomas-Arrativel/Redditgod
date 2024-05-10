@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className='nav__input'>
         <input type='text' placeholder='Search...' />
         <button className=''>
-          <img src='search-icon.png' />
+          <img src='search-icon.png' alt='logo for the search button' />
         </button>
       </div>
     </nav>

@@ -39,6 +39,8 @@ nav {
   height: 1.9rem;
   font-size: 1.1rem;
   color: var(--black);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .nav__input input:focus {
   outline: 1px solid var(--blue);
@@ -55,7 +57,10 @@ nav {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
+
 .nav__input button img {
   width: 1.9rem;
 }
