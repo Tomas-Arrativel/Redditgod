@@ -12,11 +12,18 @@ const Posts = () => {
 
   console.log(postsData.posts[0].data.children);
   return (
-    <div>
+    <div className='posts'>
       {postsData.posts.length !== 0 ? (
         postsData.posts[0].data.children.map((post) => (
-          <div key={post.data.id}>
-            <img src={post.data.thumbnail} />
+          <div className='posts__post' key={post.data.id}>
+            {post.data.thumbnail.length > 13 ? (
+              <img
+                src={post.data.thumbnail}
+                alt={`post ${post.data.id} thumbnail`}
+              />
+            ) : (
+              ''
+            )}
             <h2>{post.data.title}</h2>
           </div>
         ))
