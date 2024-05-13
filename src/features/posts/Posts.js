@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPopularPosts, selectPosts } from './postsSlice';
 
 const Posts = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-
   const dispatch = useDispatch();
-  const postsItems = useSelector(selectPosts);
+  const postsData = useSelector(selectPosts);
 
   useEffect(() => {
     dispatch(fetchPopularPosts());
-    setIsLoading(postsItems.loading);
-    setError(postsItems.error);
   }, [dispatch]);
 
-  console.log(postsItems);
+  console.log(postsData.posts[0].data.children);
   return (
     <div>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>There was a problem...</p>
-      ) : (
-        postsItems.posts[0].data.children.map((post) => (
-          <h2>{post.data.title}</h2>
+      {postsData.posts.length !== 0 ? (
+        postsData.posts[0].data.children.map((post) => (
+          <div key={post.data.id}>
+            <img src={post.data.thumbnail} />
+            <h2>{post.data.title}</h2>
+          </div>
         ))
+      ) : (
+        <p>Loading...</p>
       )}
     </div>
   );
