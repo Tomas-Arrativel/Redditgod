@@ -1,4 +1,10 @@
 nav {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.nav__container {
   background-color: var(--white);
   display: flex;
   justify-content: center;
@@ -73,6 +79,16 @@ nav {
   display: none;
 }
 
+.nav__menu-options {
+  display: none;
+  background-color: var(--white);
+  width: calc(100% - 20px);
+  margin: 10px;
+  height: 100px;
+  position: absolute;
+  top: 50px;
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
   .nav__logo h1 {
@@ -100,6 +116,9 @@ nav {
     align-items: center;
     cursor: pointer;
     border-radius: 5px;
+  }
+  .nav__menu-options.open {
+    display: block;
   }
 }
 
