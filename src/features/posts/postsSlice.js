@@ -20,20 +20,43 @@ export const PostsSlice = createSlice({
   },
   reducers: {
     upPost(state, action) {
-      if (state.ups.some(action.payload)) {
-        return state.ups.filter((id) => id !== action.payload);
-      } else if (state.downs.some(action.payload)) {
-        state.downs.filter((id) => id !== action.payload);
-        state.ups.push(action.payload);
-      } else return state.ups.push(action.payload);
+      if (state.ups.some((up) => up === action.payload)) {
+        return {
+          ...state,
+          ups: state.ups.filter((up) => up !== action.payload),
+        };
+      } else if (state.downs.some((down) => down === action.payload)) {
+        return {
+          ...state,
+          downs: state.downs.filter((down) => down !== action.payload),
+          ups: [...state.ups, action.payload],
+        };
+      } else {
+        return {
+          ...state,
+          ups: [...state.ups, action.payload],
+        };
+      }
     },
+
     downPost(state, action) {
-      if (state.downs.some(action.payload)) {
-        return state.downs.filter((id) => id !== action.payload);
-      } else if (state.ups.some(action.payload)) {
-        state.ups.filter((id) => id !== action.payload);
-        state.downs.push(action.payload);
-      } else return state.downs.push(action.payload);
+      if (state.downs.some((down) => down === action.payload)) {
+        return {
+          ...state,
+          downs: state.downs.filter((down) => down !== action.payload),
+        };
+      } else if (state.ups.some((up) => up === action.payload)) {
+        return {
+          ...state,
+          ups: state.ups.filter((up) => up !== action.payload),
+          downs: [...state.downs, action.payload],
+        };
+      } else {
+        return {
+          ...state,
+          downs: [...state.downs, action.payload],
+        };
+      }
     },
   },
   extraReducers: (builder) => {
@@ -55,7 +78,9 @@ export const PostsSlice = createSlice({
 });
 
 export const selectPosts = (state) => state.posts;
+export const selectUps = (state) => state.ups;
+export const selectDowns = (state) => state.downs;
 
-const { upPostm, downPost } = PostsSlice.actions;
+export const { upPost, downPost } = PostsSlice.actions;
 
 export default PostsSlice.reducer;
