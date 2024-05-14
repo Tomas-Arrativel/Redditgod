@@ -30,9 +30,6 @@ const Posts = () => {
     dispatch(fetchPopularPosts());
   }, [dispatch]);
 
-  console.log(postsData);
-  console.log(ups);
-
   return (
     <div className='posts'>
       {postsData.posts.length !== 0 ? (
@@ -66,7 +63,7 @@ const Posts = () => {
             </div>
 
             {/*This is the data of the posts (img and comments)*/}
-            <div>
+            <div className='posts__post-info'>
               {post.data.url.length > 13 ? (
                 <img
                   src={post.data.url}
@@ -75,7 +72,7 @@ const Posts = () => {
               ) : (
                 ''
               )}
-              <div className='posts__post-comments'>
+              <div className='posts__post-info__comments'>
                 <FaRegComment color='#283f54' size={25} />
                 <p>{post.data.num_comments}</p>
               </div>
