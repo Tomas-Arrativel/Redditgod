@@ -78,8 +78,8 @@ export const PostsSlice = createSlice({
 });
 
 export const selectPosts = (state) => state.posts;
-export const selectUps = (state) => state.ups;
-export const selectDowns = (state) => state.downs;
+export const selectUps = (state) => state.posts.ups;
+export const selectDowns = (state) => state.posts.downs;
 
 export const { upPost, downPost } = PostsSlice.actions;
 
