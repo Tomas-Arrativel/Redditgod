@@ -15,8 +15,27 @@ export const PostsSlice = createSlice({
     posts: [],
     loading: false,
     error: false,
+    ups: [],
+    downs: [],
   },
-  reducers: {},
+  reducers: {
+    upPost(state, action) {
+      if (state.ups.some(action.payload)) {
+        return state.ups.filter((id) => id !== action.payload);
+      } else if (state.downs.some(action.payload)) {
+        state.downs.filter((id) => id !== action.payload);
+        state.ups.push(action.payload);
+      } else return state.ups.push(action.payload);
+    },
+    downPost(state, action) {
+      if (state.downs.some(action.payload)) {
+        return state.downs.filter((id) => id !== action.payload);
+      } else if (state.ups.some(action.payload)) {
+        state.ups.filter((id) => id !== action.payload);
+        state.downs.push(action.payload);
+      } else return state.downs.push(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPopularPosts.pending, (state) => {
@@ -36,5 +55,7 @@ export const PostsSlice = createSlice({
 });
 
 export const selectPosts = (state) => state.posts;
+
+const { upPostm, downPost } = PostsSlice.actions;
 
 export default PostsSlice.reducer;
