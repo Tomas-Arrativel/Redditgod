@@ -32,6 +32,8 @@ const Posts = () => {
     dispatch(fetchPopularPosts());
   }, [dispatch]);
 
+  console.log(postsData);
+
   return (
     <div className='posts'>
       {postsData.posts.length !== 0 ? (
@@ -52,6 +54,8 @@ const Posts = () => {
                       : 'transparent'
                   }
                 />
+
+                <p>{post.data.ups}</p>
 
                 <LuArrowBigDown
                   onClick={() => handleDowns(post.data.id)}
