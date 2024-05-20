@@ -55,3 +55,38 @@
   font-weight: 700;
   color: var(--black);
 }
+
+/* Responsive posts */
+@media (max-width: 1200px) {
+  .posts__post {
+    width: 60%;
+  }
+}
+
+@media (max-width: 870px) {
+  .posts__post {
+    width: 80%;
+  }
+  .posts__post h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .posts {
+    width: auto;
+  }
+
+  .posts__post {
+    width: 90%;
+  }
+
+  .posts__container {
+    flex-direction: column-reverse;
+    gap: 0;
+    align-items: end;
+  }
+  .posts__votes {
+    flex-direction: row;
+  }
+}
