@@ -1,10 +1,20 @@
 import React from 'react';
 import './Post.css';
-import { useDispatch } from 'react-redux';
-import { downPost, upPost } from '../../features/posts/postsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  downPost,
+  upPost,
+  selectDowns,
+  selectUps,
+} from '../../features/posts/postsSlice';
 
-const Post = (post) => {
+import { FaRegComment } from 'react-icons/fa';
+import { LuArrowBigDown, LuArrowBigUp } from 'react-icons/lu';
+
+const Post = ({ post }) => {
   const dispatch = useDispatch();
+  const ups = useSelector(selectUps);
+  const downs = useSelector(selectDowns);
 
   const handleUps = (id) => {
     dispatch(upPost(id));
