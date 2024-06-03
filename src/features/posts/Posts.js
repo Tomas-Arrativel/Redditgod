@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPopularPosts, selectPosts } from './postsSlice';
 
 import './Posts.css';
-import Post from '../../containers/Post/Post';
+import Post from '../../components/Post/Post';
 
 const Posts = () => {
   const dispatch = useDispatch();
