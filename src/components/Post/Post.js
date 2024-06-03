@@ -8,8 +8,11 @@ import {
   selectUps,
 } from '../../features/posts/postsSlice';
 
+import fallback from './assets/image-not-found.jpg';
+
 import { FaRegComment } from 'react-icons/fa';
 import { LuArrowBigDown, LuArrowBigUp } from 'react-icons/lu';
+import ImageWithFallback from '../ImgWithFall/ImgWithFall';
 
 const Post = ({ post }) => {
   const dispatch = useDispatch();
@@ -59,8 +62,13 @@ const Post = ({ post }) => {
         {/*This is the data of the posts (img and comments)*/}
         <div className='posts__post-info'>
           {post.url.length > 13 ? (
-            <img src={post.url} alt={`post ${post.id} thumbnail`} />
+            <ImageWithFallback
+              alt={`post ${post.id} thumbnail`}
+              src={post.url}
+              fallbackSrc={fallback}
+            />
           ) : (
+            // <img src={post.url} alt={`post ${post.id} thumbnail`} />
             ''
           )}
           <div className='posts__post-info__comments'>
