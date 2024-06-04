@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { IoMdMenu, IoIosClose } from 'react-icons/io';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOnClick = () => setIsOpen(!isOpen);
-
   return (
     <nav>
       <div className='nav__container'>
@@ -23,16 +18,7 @@ const Navbar = () => {
             <FaSearch color='#ecf4ff' />
           </button>
         </div>
-        <button onClick={handleOnClick} className='nav__menu'>
-          {!isOpen ? (
-            <IoMdMenu color='#ecf4ff' size={23} />
-          ) : (
-            <IoIosClose color='#ecf4ff' size={23} />
-          )}
-        </button>
       </div>
-
-      <div className={`nav__menu-options ${isOpen ? 'open' : ''}`}></div>
     </nav>
   );
 };
