@@ -17,7 +17,7 @@ const Posts = () => {
     <div className='posts'>
       {postsData.posts.length !== 0 ? (
         postsData.posts[0].data.children.map((post) => (
-          <Post post={post.data} />
+          <Post post={post.data} key={post.data.id} />
         ))
       ) : (
         <p>Loading...</p>
