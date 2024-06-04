@@ -6,11 +6,13 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Posts from './features/posts/Posts';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',

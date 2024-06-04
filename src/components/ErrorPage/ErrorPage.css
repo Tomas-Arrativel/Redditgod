@@ -1,0 +1,12 @@
+#error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 87vh;
+  gap: 1rem;
+}
+
+.link {
+  color: var(--blue);
+}
