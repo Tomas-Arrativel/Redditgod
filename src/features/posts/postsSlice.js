@@ -9,6 +9,15 @@ export const fetchPopularPosts = createAsyncThunk(
   },
 );
 
+export const fetchSearchPosts = createAsyncThunk(
+  'posts/fetchSearchPosts',
+  async (q) => {
+    const response = await fetch(`https://www.reddit.com/search.json?q=${q}`);
+    const data = await response.json();
+    return data;
+  },
+);
+
 export const PostsSlice = createSlice({
   name: 'posts',
   initialState: {
@@ -73,6 +82,19 @@ export const PostsSlice = createSlice({
         state.loading = false;
         state.error = false;
         state.posts.push(action.payload);
+      })
+      .addCase(fetchSearchPosts.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(fetchSearchPosts.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
+      })
+      .addCase(fetchSearchPosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = false;
+        state.posts.push(action.payload);
       });
   },
 });
@@ -80,6 +102,8 @@ export const PostsSlice = createSlice({
 export const selectPosts = (state) => state.posts;
 export const selectUps = (state) => state.posts.ups;
 export const selectDowns = (state) => state.posts.downs;
+
+export const selectResults = (state) => state.posts;
 
 export const { upPost, downPost } = PostsSlice.actions;
 

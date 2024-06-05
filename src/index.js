@@ -7,7 +7,7 @@ import store from './app/store';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Posts from './features/posts/Posts';
 import ErrorPage from './components/ErrorPage/ErrorPage';
-import SearchResults from './features/search/SearchResults';
+import SearchResults from './features/posts/SearchResults';
 
 const router = createBrowserRouter([
   {
