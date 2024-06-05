@@ -81,7 +81,7 @@ export const PostsSlice = createSlice({
       .addCase(fetchPopularPosts.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-        state.posts.push(action.payload);
+        state.posts = action.payload;
       })
       .addCase(fetchSearchPosts.pending, (state) => {
         state.loading = true;
@@ -94,7 +94,7 @@ export const PostsSlice = createSlice({
       .addCase(fetchSearchPosts.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-        state.posts.push(action.payload);
+        state.posts = action.payload;
       });
   },
 });

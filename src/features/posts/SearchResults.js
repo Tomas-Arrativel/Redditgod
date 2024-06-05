@@ -10,17 +10,25 @@ const SearchResults = () => {
   const searchResult = useSelector(selectResults);
 
   const url = new URL(window.location);
-  const q = url.searchParams.get('q');
-  console.log(q);
+  const searchQuery = url.searchParams.get('q');
 
   useEffect(() => {
-    dispatch(fetchSearchPosts(q));
+    dispatch(fetchSearchPosts(searchQuery));
   }, [dispatch]);
 
-  // console.log(searchResult.posts[0].data.children);
-  console.log(searchResult);
-
-  return <div>SearchResults</div>;
+  return (
+    <div className='searchResults'>
+      {searchResult.loading ? (
+        <p>Loading...</p>
+      ) : searchResult.posts.length !== 0 ? (
+        searchResult.posts.data.children.map((post) => (
+          <Post post={post.data} key={post.data.id} />
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
 };
 
 export default SearchResults;
