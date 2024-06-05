@@ -33,12 +33,12 @@ nav {
   width: 2.4rem;
 }
 
-.nav__input {
+form {
   display: flex;
   align-items: center;
 }
 
-.nav__input input {
+form input {
   border: none;
   width: 20rem;
   padding: 0.3rem;
@@ -48,11 +48,11 @@ nav {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.nav__input input:focus {
+form input:focus {
   outline: 1px solid var(--blue);
 }
 
-.nav__input button {
+form button {
   height: 1.9rem;
   font-size: 1.1rem;
   padding: 0.3rem;
@@ -67,11 +67,11 @@ nav {
   border-bottom-right-radius: 5px;
 }
 
-.nav__input button img {
+form button img {
   width: 1.9rem;
 }
 
-.nav__input button:hover {
+form button:hover {
   background-color: #1e67bb;
 }
 
@@ -85,13 +85,13 @@ nav {
     width: 2rem;
   }
 
-  .nav__input input {
+  form input {
     width: 14rem;
   }
 }
 
 @media (max-width: 430px) {
-  .nav__input input {
+  form input {
     width: 10rem;
     font-size: 1rem;
   }
