@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './Navbar.css';
-import { Form } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -13,7 +12,7 @@ const Navbar = () => {
             Reddit<span>God</span>
           </h1>
         </div>
-        <Form action='/search' className='nav__input'>
+        <form action='/search' className='nav__input'>
           <input
             id='q'
             aria-label='Search contacts'
@@ -24,7 +23,7 @@ const Navbar = () => {
           <button>
             <FaSearch color='#ecf4ff' />
           </button>
-        </Form>
+        </form>
       </div>
     </nav>
   );

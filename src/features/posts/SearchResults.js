@@ -14,7 +14,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     dispatch(fetchSearchPosts(searchQuery));
-  }, [dispatch]);
+  }, [dispatch, window.location]);
 
   return (
     <div className='searchResults'>
